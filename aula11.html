@@ -1,0 +1,49 @@
+<html>
+
+<head>
+    <title>Curso Vue - Aula 11</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <my-form />
+    </div>
+    <script>
+        const myForm = Vue.component("my-form", {
+            template: '<div>' +
+                '<input type="text" v-model="text">' +
+                '<button @click="clear" type="button">Limpar</button>' +
+                '<p>{{ reversedText }}</p>' +
+                '<p>{{ reversedTextMethod() }}</p>' +
+                '</div>',
+            data() {
+                return {
+                    text: '',
+                };
+            },
+            computed: {
+                reversedText() {
+                    return this.text.split('').reverse().join('');
+                }
+            },
+            methods: {
+                clear() {
+                    this.text = '';
+                },
+                reversedTextMethod() {
+                    return this.text.split('').reverse().join('');
+                },
+            }
+        });
+
+        const app = new Vue({
+            el: '#app',
+            data: {
+
+            },
+        });
+    </script>
+</body>
+
+</html>
