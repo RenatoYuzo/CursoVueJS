@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Watch</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+
+        <p><input type="text" v-model:value="nome"></p>
+        <p>
+            <h1>{{ nome }}</h1>
+        </p>
+        <p>
+            <h1>{{ nomeAtualizado }}</h1>
+        </p>
+
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                nome: 'Renato',
+                nomeAtualizado: 'blablabla'
+            },
+            watch: {
+                nome(novoValor) {
+                    this.nomeAtualizado = this.nome;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

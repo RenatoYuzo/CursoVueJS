@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Estilo CSS</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        .vermelho {
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" @click="inverterCor" :class="{'vermelho': aplicarCor}">
+        Teste
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                aplicarCor: false
+            },
+            methods: {
+                inverterCor() {
+                    this.aplicarCor = !this.aplicarCor;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

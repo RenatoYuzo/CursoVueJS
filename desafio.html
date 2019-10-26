@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Desafio</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-model:value="text">
+        <button type="button" @click="clear">Clear</button>
+        <p>{{ text }}</p>
+        <form-result :name="name" :age="age"></form-result>
+    </div>
+
+    <script>
+        const formResult = Vue.component('form-result', {
+            template: '<div>' +
+                '<p v-if="name">Meu nome é {{ name }}.</p>' +
+                '<p v-if="age">Minha idade é {{ age }}.</p>' +
+                '</div>',
+            props: {
+                name: {
+                    type: String,
+                    defaul: 'Renato'
+                },
+                age: {
+                    type: Number,
+                    default: 26
+                }
+            }
+        });
+
+        const app = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    text: 'Texto para testar'
+                };
+            },
+            methods: {
+                clear() {
+                    this.text = ''
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

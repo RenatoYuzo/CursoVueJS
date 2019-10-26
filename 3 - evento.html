@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Evento</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+
+        <p>
+            <h1>{{ contador }}</h1>
+        </p>
+        <p><button @click="add">+1</button></p>
+        <p><button @click="contador -= 2">-2</button></p>
+
+        <p @mousemove="atualizarPosicao">
+            Coordenadas: {{ x }} e {{ y }}
+            <span @mousemove="stop">AQUI NAO</span>
+        </p>
+
+        <input type="text" @keyup.enter="alerta" v-model:value="texto">
+
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                x: 0,
+                y: 0,
+                contador: 0,
+                texto: 'blablabla'
+            },
+            methods: {
+                add() {
+                    this.contador++;
+                },
+                atualizarPosicao(e) {
+                    this.x = e.clientX;
+                    this.y = e.clientY;
+                },
+                stop(e) {
+                    e.stopPropagation();
+                },
+                alerta() {
+                    alert(this.texto);
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
